@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'checkstyle'
+    id 'maven-publish'
+}
+
+checkstyle {
+    toolVersion = '10.12.4'
+    configFile = rootProject.file('config/checkstyle/google_checks.xml')
+}
+
+tasks.withType(Checkstyle).configureEach {
+    configProperties = [
+        'org.checkstyle.google.suppressionfilter.config': rootProject.file('config/checkstyle/checkstyle-suppressions.xml').absolutePath
+    ]
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.jensprog:1dv610-L2:v1.0.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+    }
+}
+
+application {
+    mainClass = 'com.jensprog.App'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+
