@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.5.6'
+    id 'io.spring.dependency-management' version '1.1.7'
     id 'application'
     id 'checkstyle'
     id 'maven-publish'
@@ -23,6 +25,11 @@ repositories {
 
 dependencies {
     implementation 'com.github.jensprog:1dv610-L2:v1.0.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.webjars:bootstrap:5.3.2'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
 }
 
@@ -35,7 +42,7 @@ test {
 }
 
 application {
-    mainClass = 'com.jensprog.App'
+    mainClass = 'com.jensprog.recipeconverter.App'
 }
 
 java {
