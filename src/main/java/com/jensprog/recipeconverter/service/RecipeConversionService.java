@@ -8,5 +8,4 @@ public class RecipeConversionService {
   public RecipeConversionService(UnitConversionService unitConversionService) {
     this.unitConversionService = unitConversionService;
   }
-
 }
