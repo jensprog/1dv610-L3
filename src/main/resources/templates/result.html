@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Converter</title>
+</head>
+<body>
+
+  <div class="container mt-5">
+    <h1>Conversion Result</h1>
+    <p>Recipe: <strong th:text="${recipeName}"></strong></p>
+    <p>Original Amount: <strong th:text="${originalValue}"></strong> <strong th:text="${fromUnit}"></strong></p>
+    <p>Converted Amount: <strong th:text="${convertedValue}"></strong> <strong th:text="${toUnit}"></strong></p>
+    <a href="/convert" class="btn btn-primary mt-3">Convert Another Recipe</a>
+  </div>
+</body>
+</html>
