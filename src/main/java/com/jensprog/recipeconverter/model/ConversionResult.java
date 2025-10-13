@@ -12,12 +12,12 @@ public class ConversionResult implements Serializable {
 
   public ConversionResult() {}
 
-  public ConversionResult(ConversionRequest request, RecipeConversionService service) {
+  public ConversionResult(ConversionRequest request, RecipeConversionService service, double convertedValue) {
     this.recipeName = request.getRecipeName();
     this.amount = request.getAmount();
     this.fromUnit = request.getFromUnit();
     this.toUnit = request.getToUnit();
-    this.convertedValue = calculateConversionResult(service);
+    this.convertedValue = convertedValue;
   }
 
   public String getRecipeName() {
@@ -58,10 +58,5 @@ public class ConversionResult implements Serializable {
 
   public void setConvertedValue(double convertedValue) {
     this.convertedValue = convertedValue;
-  }
-
-  public double calculateConversionResult(RecipeConversionService service) {
-    ConversionRequest request = new ConversionRequest(recipeName, amount, fromUnit, toUnit);
-    return service.convert(request);
   }
 }

@@ -30,7 +30,10 @@ public class RecipeConverterController {
   @PostMapping("/convert")
   public String convertRecipe(
       @Valid ConversionRequest conversionRequest, @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
-    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService);
+        
+    double convertedValue = recipeConversionService.convert(conversionRequest);
+    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, convertedValue);
+
     conversionResults.add(result);
     model.addAttribute("recipeName", result.getRecipeName());
     model.addAttribute("originalValue", result.getAmount());
