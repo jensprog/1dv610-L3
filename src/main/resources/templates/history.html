@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Converter</title>
+</head>
+<body>
+  <h1>Conversion History</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Recipe Name</th>
+        <th>Original Amount</th>
+        <th>From Unit</th>
+        <th>Converted Amount</th>
+        <th>To Unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="result : ${conversionHistory}">
+        <td th:text="${result.recipeName}"></td>
+        <td th:text="${result.amount}"></td>
+        <td th:text="${result.fromUnit}"></td>
+        <td th:text="${result.convertedValue}"></td>
+        <td th:text="${result.toUnit}"></td>
+      </tr>
+    </tbody>
+</body>
+</html>

@@ -1,8 +1,9 @@
 package com.jensprog.recipeconverter.model;
 
 import com.jensprog.recipeconverter.service.RecipeConversionService;
+import java.io.Serializable;
 
-public class ConversionResult {
+public class ConversionResult implements Serializable {
   private String recipeName;
   private double amount;
   private String fromUnit;

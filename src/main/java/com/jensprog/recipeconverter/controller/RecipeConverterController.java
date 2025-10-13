@@ -42,7 +42,7 @@ public class RecipeConverterController {
   }
 
   @ModelAttribute("conversionResults")
-  public List<ConversionResult> initializeConversionResults() {
+  public List<ConversionResult> addConversionResults() {
     return new ArrayList<>();
   }
 }
