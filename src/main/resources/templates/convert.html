@@ -25,13 +25,45 @@
       <label for="amount" class="form-label">Amount:</label>
       <input type="number" step="any" class="form-control" id="amount" name="amount" required>
     </div>
-    <div class="mb-3">
+    <div class="scrollmenu">
       <label for="fromUnit" class="form-label">From Unit:</label>
-      <input type="text" class="form-control" id="fromUnit" name="fromUnit" required>
+      <select class="form-select" id="fromUnit" name="fromUnit" required>
+        <option value="" disabled selected>Select unit</option>
+        <option value="tsp">Teaspoon (tsp)</option>
+        <option value="tbsp">Tablespoon (tbsp)</option>
+        <option value="cup">Cup (cup)</option>
+        <option value="ml">Milliliter (ml)</option>
+        <option value="cl">Centiliter (cl)</option>
+        <option value="l">Liter (l)</option>
+        <option value="dl">Deciliter (dl)</option>
+        <option value="oz">Ounce (oz)</option>
+        <option value="pint">Pint (pint)</option>
+        <option value="quart">Quart (quart)</option>
+        <option value="gallon">Fluid Ounce (floz)</option>
+        <option value="gram">Gram (g)</option>
+        <option value="kg">Kilogram (kg)</option>
+        <option value="lb">Pound (lb)</option>
+      </select>
     </div>
-    <div class="mb-3">
+    <div class="scrollmenu">
       <label for="toUnit" class="form-label">To Unit:</label>
-      <input type="text" class="form-control" id="toUnit" name="toUnit" required>
+      <select class="form-select" id="toUnit" name="toUnit" required>
+        <option value="" disabled selected>Select unit</option>
+        <option value="tsp">Teaspoon (tsp)</option>
+        <option value="tbsp">Tablespoon (tbsp)</option>
+        <option value="cup">Cup (cup)</option>
+        <option value="ml">Milliliter (ml)</option>
+        <option value="cl">Centiliter (cl)</option>
+        <option value="l">Liter (l)</option>
+        <option value="dl">Deciliter (dl)</option>
+        <option value="oz">Ounce (oz)</option>
+        <option value="pint">Pint (pint)</option>
+        <option value="quart">Quart (quart)</option>
+        <option value="gallon">Fluid Ounce (floz)</option>
+        <option value="gram">Gram (g)</option>
+        <option value="kg">Kilogram (kg)</option>
+        <option value="lb">Pound (lb)</option>
+      </select>
     </div>
     <button type="submit" class="btn btn-primary">Convert</button>
   </form>

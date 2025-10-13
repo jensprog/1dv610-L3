@@ -25,3 +25,9 @@ nav {
 nav .btn {
   margin-bottom: 0;
 }
+
+.scrollmenu {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-bottom: 15px;
+}
