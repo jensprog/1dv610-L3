@@ -4,6 +4,8 @@ import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.recipeconverter.service.SessionStorageManagement;
 import jakarta.servlet.http.HttpSession;
@@ -23,5 +25,17 @@ public class SessionController {
     List<ConversionResult> history = sessionStorageManagement.getConversionHistory(session);
     model.addAttribute("conversionHistory", history);
     return "history";
+  }
+
+  @PostMapping("/remove")
+  public String removeConversionByIndex(HttpSession session, @RequestParam int index) {
+    sessionStorageManagement.removeConversionByIndex(session, index);
+    return "redirect:/session/history";
+  }
+
+  @PostMapping("/clear")
+  public String clearConversionHistory(HttpSession session) {
+    sessionStorageManagement.clearAllHistory(session);
+    return "redirect:/session/history";
   }
 }
