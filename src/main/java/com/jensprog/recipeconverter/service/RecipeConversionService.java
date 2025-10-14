@@ -1,5 +1,6 @@
 package com.jensprog.recipeconverter.service;
 
+import com.jensprog.recipeconverter.error.IncompatibleUnitException;
 import com.jensprog.recipeconverter.model.ConversionRequest;
 import com.jensprog.unitconverter.UnitConversionService;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,14 @@ public class RecipeConversionService {
   }
 
   public double convert(ConversionRequest conversionRequest) {
-    return unitConversionService.convert(
+    try { 
+      return unitConversionService.convert(
         conversionRequest.getAmount(),
         conversionRequest.getFromUnit(),
         conversionRequest.getToUnit()
     );
+    } catch (IllegalArgumentException error) {
+      throw new IncompatibleUnitException(error.getMessage());
+    }
   }
 }

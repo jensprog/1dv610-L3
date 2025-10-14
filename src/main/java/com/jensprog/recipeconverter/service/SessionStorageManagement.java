@@ -1,16 +1,17 @@
 package com.jensprog.recipeconverter.service;
 
 import com.jensprog.recipeconverter.model.ConversionResult;
-import org.springframework.stereotype.Service;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SessionStorageManagement {
   public List<ConversionResult> getConversionHistory(HttpSession session) {
     @SuppressWarnings("unchecked")
-    List<ConversionResult> result = (List<ConversionResult>) session.getAttribute("conversionResults");
+    List<ConversionResult> result = (List<ConversionResult>) 
+        session.getAttribute("conversionResults");
     return result != null ? result : new ArrayList<>();
   }
 
@@ -21,7 +22,9 @@ public class SessionStorageManagement {
   public void removeConversionByIndex(HttpSession session, int index) {
     if (hasConversions(session)) {
       @SuppressWarnings("unchecked")
-      List<ConversionResult> results = (List<ConversionResult>) session.getAttribute("conversionResults");
+      List<ConversionResult> results = (List<ConversionResult>) 
+          session.getAttribute("conversionResults");
+
       if (results != null && !results.isEmpty() && index >= 0 && index < results.size()) {
         results.remove(index);
         session.setAttribute("conversionResults", results);

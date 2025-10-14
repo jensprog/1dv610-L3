@@ -1,5 +1,6 @@
 package com.jensprog.recipeconverter.controller;
 
+import com.jensprog.recipeconverter.error.IncompatibleUnitException;
 import com.jensprog.recipeconverter.model.ConversionRequest;
 import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.recipeconverter.service.RecipeConversionService;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,10 +31,12 @@ public class RecipeConverterController {
 
   @PostMapping("/convert")
   public String convertRecipe(
-      @Valid ConversionRequest conversionRequest, @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
-        
+      @Valid ConversionRequest conversionRequest,
+      @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
+
     double convertedValue = recipeConversionService.convert(conversionRequest);
-    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, convertedValue);
+    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, 
+        convertedValue);
 
     conversionResults.add(result);
     model.addAttribute("recipeName", result.getRecipeName());
@@ -42,6 +46,12 @@ public class RecipeConverterController {
     model.addAttribute("convertedValue", result.getConvertedValue());
     model.addAttribute("result", result);
     return "result";
+  }
+
+  @ExceptionHandler(IncompatibleUnitException.class)
+  public String handleIncompatibleUnitException(IncompatibleUnitException error, Model model) {
+    model.addAttribute("errorMessage", error.getMessage());
+    return "convert";
   }
 
   @ModelAttribute("conversionResults")

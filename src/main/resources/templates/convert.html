@@ -72,6 +72,10 @@
     <button type="submit" class="btn btn-primary">Convert</button>
   </form>
 
+  <div th:if="${errorMessage}" class="error">
+    <p th:text="${errorMessage}"></p>
+  </div>
+
 </body>
 
 </html>
