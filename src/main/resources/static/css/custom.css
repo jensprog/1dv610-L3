@@ -13,21 +13,3 @@ form {
   align-items: center;
   margin-top: 20px;
 }
-
-nav {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  gap: 10px;
-}
-
-nav .btn {
-  margin-bottom: 0;
-}
-
-.scrollmenu {
-  overflow-x: auto;
-  white-space: nowrap;
-  margin-bottom: 15px;
-}

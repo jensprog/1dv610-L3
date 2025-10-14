@@ -9,14 +9,26 @@
   <title>Recipe Converter</title>
 </head>
 
-<body>
-  <h1>Convert your recipe!</h1>
-  <nav>
-    <a href="/session/history" class="btn btn-secondary mb-3">View Conversion History</a>
-    <a href="/" class="btn btn-secondary mb-3">Home</a>
-  </nav>
-  <p>Use the form below to convert your recipe measurements.</p>
-  <form action="/convert" method="post">
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h1 class="card-title mb-0">Convert your recipe!</h1>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-end mb-4">
+              <a href="/session/history" class="btn btn-outline-secondary me-2">View Conversion History</a>
+              <a href="/" class="btn btn-outline-secondary">Home</a>
+            </div>
+            <p class="text-muted mb-4">Use the form below to convert your recipe measurements.</p>
+            
+            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+              <strong>Error:</strong> <span th:text="${errorMessage}"></span>
+            </div>
+            
+            <form action="/convert" method="post">
     <div class="mb-3">
       <label for="recipe" class="form-label">Recipe Name (One unit conversion at a time):</label>
       <input type="text" class="form-control" id="recipe" name="recipeName" required>
@@ -29,7 +41,7 @@
       <label for="amount" class="form-label">Amount:</label>
       <input type="number" step="any" class="form-control" id="amount" name="amount" required>
     </div>
-    <div class="scrollmenu">
+    <div class="mb-3">
       <label for="fromUnit" class="form-label">From Unit:</label>
       <select class="form-select" id="fromUnit" name="fromUnit" required>
         <option value="" disabled selected>Select unit</option>
@@ -49,7 +61,7 @@
         <option value="lb">Pound (lb)</option>
       </select>
     </div>
-    <div class="scrollmenu">
+    <div class="mb-3">
       <label for="toUnit" class="form-label">To Unit:</label>
       <select class="form-select" id="toUnit" name="toUnit" required>
         <option value="" disabled selected>Select unit</option>
@@ -69,13 +81,15 @@
         <option value="lb">Pound (lb)</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Convert</button>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary btn-lg">Convert Recipe</button>
+    </div>
   </form>
-
-  <div th:if="${errorMessage}" class="error">
-    <p th:text="${errorMessage}"></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 </body>
 
 </html>
