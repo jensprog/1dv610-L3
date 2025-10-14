@@ -48,7 +48,7 @@ public class RecipeConverterController {
     model.addAttribute("toUnit", result.getToUnit());
     model.addAttribute("convertedValue", result.getConvertedValue());
     model.addAttribute("result", result);
-    return "result";
+    return "redirect:/convert";
   }
 
   @ExceptionHandler(IncompatibleUnitException.class)
