@@ -35,8 +35,7 @@ public class RecipeConverterController {
       @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
 
     double convertedValue = recipeConversionService.convert(conversionRequest);
-    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, 
-        convertedValue);
+    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, convertedValue);
 
     conversionResults.add(result);
     model.addAttribute("recipeName", result.getRecipeName());

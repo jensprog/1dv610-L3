@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 public class SessionStorageManagement {
   public List<ConversionResult> getConversionHistory(HttpSession session) {
     @SuppressWarnings("unchecked")
-    List<ConversionResult> result = (List<ConversionResult>) 
-        session.getAttribute("conversionResults");
+    List<ConversionResult> result = (List<ConversionResult>) session.getAttribute("conversionResults");
     return result != null ? result : new ArrayList<>();
   }
 
@@ -22,8 +21,7 @@ public class SessionStorageManagement {
   public void removeConversionByIndex(HttpSession session, int index) {
     if (hasConversions(session)) {
       @SuppressWarnings("unchecked")
-      List<ConversionResult> results = (List<ConversionResult>) 
-          session.getAttribute("conversionResults");
+      List<ConversionResult> results = (List<ConversionResult>) session.getAttribute("conversionResults");
 
       if (results != null && !results.isEmpty() && index >= 0 && index < results.size()) {
         results.remove(index);
