@@ -16,6 +16,7 @@
     <thead>
       <tr>
         <th>Recipe Name</th>
+        <th>Ingredient</th>
         <th>Original Amount</th>
         <th>From Unit</th>
         <th>Converted Amount</th>
@@ -26,6 +27,7 @@
     <tbody>
       <tr th:each="result : ${conversionHistory}">
         <td th:text="${result.recipeName}"></td>
+        <td th:text="${result.ingredient}"></td>
         <td th:text="${result.amount}"></td>
         <td th:text="${result.fromUnit}"></td>
         <td th:text="${result.convertedValue}"></td>

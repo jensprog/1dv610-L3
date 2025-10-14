@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 public class ConversionResult implements Serializable {
   private String recipeName;
+  private String ingredient;
   private double amount;
   private String fromUnit;
   private String toUnit;
@@ -15,6 +16,7 @@ public class ConversionResult implements Serializable {
   public ConversionResult(ConversionRequest request, RecipeConversionService service, 
       double convertedValue) {
     this.recipeName = request.getRecipeName();
+    this.ingredient = request.getIngredient();
     this.amount = request.getAmount();
     this.fromUnit = request.getFromUnit();
     this.toUnit = request.getToUnit();
@@ -23,6 +25,10 @@ public class ConversionResult implements Serializable {
 
   public String getRecipeName() {
     return recipeName;
+  }
+
+  public String getIngredient() {
+    return ingredient;
   }
 
   public double getAmount() {
@@ -43,6 +49,10 @@ public class ConversionResult implements Serializable {
 
   public void setRecipeName(String recipeName) {
     this.recipeName = recipeName;
+  }
+
+  public void setIngredient(String ingredient) {
+    this.ingredient = ingredient;
   }
 
   public void setAmount(double amount) {

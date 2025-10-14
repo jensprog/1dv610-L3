@@ -40,6 +40,7 @@ public class RecipeConverterController {
 
     conversionResults.add(result);
     model.addAttribute("recipeName", result.getRecipeName());
+    model.addAttribute("ingredient", result.getIngredient());
     model.addAttribute("originalValue", result.getAmount());
     model.addAttribute("fromUnit", result.getFromUnit());
     model.addAttribute("toUnit", result.getToUnit());

@@ -8,6 +8,9 @@ public class ConversionRequest {
   @NotBlank(message = "Recipe name is required")
   private String recipeName;
 
+  @NotBlank(message = "Ingredient is required")
+  private String ingredient;
+
   @NotNull(message = "Amount is required")
   @DecimalMin(value = "0.1", message = "Amount must be greater than 0")
   private double amount;
@@ -20,8 +23,9 @@ public class ConversionRequest {
 
   public ConversionRequest() {}
 
-  public ConversionRequest(String recipeName, double amount, String fromUnit, String toUnit) {
+  public ConversionRequest(String recipeName, String ingredient, double amount, String fromUnit, String toUnit) {
     this.recipeName = recipeName;
+    this.ingredient = ingredient;
     this.amount = amount;
     this.fromUnit = fromUnit;
     this.toUnit = toUnit;
@@ -29,6 +33,10 @@ public class ConversionRequest {
 
   public String getRecipeName() {
     return recipeName;
+  }
+
+  public String getIngredient() {
+    return ingredient;
   }
 
   public double getAmount() {
@@ -45,6 +53,10 @@ public class ConversionRequest {
 
   public void setRecipeName(String recipeName) {
     this.recipeName = recipeName;
+  }
+
+  public void setIngredient(String ingredient) {
+    this.ingredient = ingredient;
   }
 
   public void setAmount(double amount) {
