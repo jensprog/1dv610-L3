@@ -4,6 +4,9 @@ import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+/**
+ * Model that holds the users input data, used to perform a conversion by RecipeConversionService.
+ */
 public class ConversionRequest {
   @NotBlank(message = "Recipe name is required")
   private String recipeName;

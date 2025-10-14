@@ -5,6 +5,9 @@ import com.jensprog.recipeconverter.model.ConversionRequest;
 import com.jensprog.unitconverter.UnitConversionService;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service that uses UnitConversionService module to perform unit conversions.
+ */
 @Service
 public class RecipeConversionService {
   private final UnitConversionService unitConversionService;

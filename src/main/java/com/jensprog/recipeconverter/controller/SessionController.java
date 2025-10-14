@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
+/**
+ * Handles the session-related operations such as viewing, removing, and clearing conversion history.
+ */
 @Controller
 @RequestMapping("/session")
 public class SessionController {

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
+/**
+ * Service for managing session storage to save conversion results.
+ */
 @Service
 public class SessionStorageManagement {
   public List<ConversionResult> getConversionHistory(HttpSession session) {

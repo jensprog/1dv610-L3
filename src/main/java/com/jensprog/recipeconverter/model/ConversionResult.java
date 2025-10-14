@@ -3,6 +3,9 @@ package com.jensprog.recipeconverter.model;
 import com.jensprog.recipeconverter.service.RecipeConversionService;
 import java.io.Serializable;
 
+/**
+ * Model that holds the output of a conversion, used by the RecipeConverterController to display the data.
+ */
 public class ConversionResult implements Serializable {
   private String recipeName;
   private String ingredient;
