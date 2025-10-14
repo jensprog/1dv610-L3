@@ -14,7 +14,7 @@ public class SessionStorageManagement {
     return result != null ? result : new ArrayList<>();
   }
 
-  public boolean hasConversions(HttpSession session) {
+  private boolean hasConversions(HttpSession session) {
     return session != null && !getConversionHistory(session).isEmpty();
   }
 
