@@ -24,26 +24,31 @@
             </div>
             <p class="text-muted mb-4">Use the form below to convert your recipe measurements.</p>
             
-            <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
-              <strong>Error:</strong> <span th:text="${errorMessage}"></span>
+           <div th:if="${bindingResult != null and bindingResult.hasErrors()}">
+            <div class="alert alert-danger">
+              <ul>
+                <li th:each="err : ${bindingResult.allErrors}" th:text="${err.defaultMessage}"></li>
+              </ul>
             </div>
-            
+           </div>
+
+
             <form action="/convert" method="post">
     <div class="mb-3">
       <label for="recipe" class="form-label">Recipe Name (One unit conversion at a time):</label>
-      <input type="text" class="form-control" id="recipe" name="recipeName" required>
+      <input type="text" class="form-control" id="recipe" name="recipeName" >
     </div>
     <div class="mb-3">
       <label for="ingredient" class="form-label">Ingredient:</label>
-      <input type="text" class="form-control" id="ingredient" name="ingredient" required>
+      <input type="text" class="form-control" id="ingredient" name="ingredient" >
     </div>
     <div class="mb-3">
       <label for="amount" class="form-label">Amount:</label>
-      <input type="number" step="any" class="form-control" id="amount" name="amount" required>
+      <input type="number" step="any" class="form-control" id="amount" name="amount" >
     </div>
     <div class="mb-3">
       <label for="fromUnit" class="form-label">From Unit:</label>
-      <select class="form-select" id="fromUnit" name="fromUnit" required>
+      <select class="form-select" id="fromUnit" name="fromUnit" >
         <option value="" disabled selected>Select unit</option>
         <option value="tsp">Teaspoon (tsp)</option>
         <option value="tbsp">Tablespoon (tbsp)</option>
@@ -63,7 +68,7 @@
     </div>
     <div class="mb-3">
       <label for="toUnit" class="form-label">To Unit:</label>
-      <select class="form-select" id="toUnit" name="toUnit" required>
+      <select class="form-select" id="toUnit" name="toUnit" >
         <option value="" disabled selected>Select unit</option>
         <option value="tsp">Teaspoon (tsp)</option>
         <option value="tbsp">Tablespoon (tbsp)</option>

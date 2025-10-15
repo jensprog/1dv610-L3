@@ -4,11 +4,12 @@ import com.jensprog.recipeconverter.error.IncompatibleUnitException;
 import com.jensprog.recipeconverter.model.ConversionRequest;
 import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.recipeconverter.service.RecipeConversionService;
-import jakarta.validation.Valid;
+import com.jensprog.recipeconverter.validation.RequestValidator;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,9 +23,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 public class RecipeConverterController {
   private final RecipeConversionService recipeConversionService;
+  private final RequestValidator requestValidator;
 
-  public RecipeConverterController(RecipeConversionService recipeConversionService) {
+  public RecipeConverterController(RecipeConversionService recipeConversionService, RequestValidator requestValidator) {
     this.recipeConversionService = recipeConversionService;
+    this.requestValidator = requestValidator;
   }
 
   @GetMapping("/convert")
@@ -34,8 +37,15 @@ public class RecipeConverterController {
 
   @PostMapping("/convert")
   public String convertRecipe(
-      @Valid ConversionRequest conversionRequest,
+      @ModelAttribute ConversionRequest conversionRequest, BindingResult bindingResult,
       @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
+
+    requestValidator.validate(conversionRequest, bindingResult);
+
+    if (bindingResult.hasErrors()) {
+      model.addAttribute("bindingResult", bindingResult);
+      return "convert";
+    }
 
     double convertedValue = recipeConversionService.convert(conversionRequest);
     ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, convertedValue);
