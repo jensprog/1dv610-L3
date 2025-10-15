@@ -4,7 +4,11 @@ import com.jensprog.recipeconverter.error.IncompatibleUnitException;
 import com.jensprog.recipeconverter.model.ConversionRequest;
 import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.recipeconverter.service.RecipeConversionService;
+import com.jensprog.recipeconverter.service.SessionStorageManagement;
 import com.jensprog.recipeconverter.validation.RequestValidator;
+
+import jakarta.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
@@ -14,20 +18,20 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 /**
  * Controller that handles recipe conversion requests and manages conversion results in the session.
  */
-@SessionAttributes("conversionResults")
 @Controller
 public class RecipeConverterController {
   private final RecipeConversionService recipeConversionService;
   private final RequestValidator requestValidator;
+  private final SessionStorageManagement sessionStorageManagement;
 
-  public RecipeConverterController(RecipeConversionService recipeConversionService, RequestValidator requestValidator) {
+  public RecipeConverterController(RecipeConversionService recipeConversionService, RequestValidator requestValidator, SessionStorageManagement sessionStorageManagement) {
     this.recipeConversionService = recipeConversionService;
     this.requestValidator = requestValidator;
+    this.sessionStorageManagement = sessionStorageManagement;
   }
 
   @GetMapping("/convert")
@@ -38,7 +42,7 @@ public class RecipeConverterController {
   @PostMapping("/convert")
   public String convertRecipe(
       @ModelAttribute ConversionRequest conversionRequest, BindingResult bindingResult,
-      @ModelAttribute("conversionResults") List<ConversionResult> conversionResults, Model model) {
+      HttpSession session, Model model) {
 
     requestValidator.validate(conversionRequest, bindingResult);
 
@@ -47,17 +51,10 @@ public class RecipeConverterController {
       return "convert";
     }
 
-    double convertedValue = recipeConversionService.convert(conversionRequest);
-    ConversionResult result = new ConversionResult(conversionRequest, recipeConversionService, convertedValue);
-
+    ConversionResult result = recipeConversionService.convertRecipe(conversionRequest);
+    List<ConversionResult> conversionResults = sessionStorageManagement.getConversionHistory(session);
     conversionResults.add(result);
-    model.addAttribute("recipeName", result.getRecipeName());
-    model.addAttribute("ingredient", result.getIngredient());
-    model.addAttribute("originalValue", result.getAmount());
-    model.addAttribute("fromUnit", result.getFromUnit());
-    model.addAttribute("toUnit", result.getToUnit());
-    model.addAttribute("convertedValue", result.getConvertedValue());
-    model.addAttribute("result", result);
+    session.setAttribute("conversionResults", conversionResults);
     return "redirect:/convert";
   }
 
@@ -65,10 +62,5 @@ public class RecipeConverterController {
   public String handleIncompatibleUnitException(IncompatibleUnitException error, Model model) {
     model.addAttribute("errorMessage", error.getMessage());
     return "convert";
-  }
-
-  @ModelAttribute("conversionResults")
-  public List<ConversionResult> addConversionResults() {
-    return new ArrayList<>();
   }
 }

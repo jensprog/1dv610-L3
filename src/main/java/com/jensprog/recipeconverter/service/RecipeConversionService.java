@@ -2,6 +2,7 @@ package com.jensprog.recipeconverter.service;
 
 import com.jensprog.recipeconverter.error.IncompatibleUnitException;
 import com.jensprog.recipeconverter.model.ConversionRequest;
+import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.unitconverter.UnitConversionService;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,11 @@ public class RecipeConversionService {
 
   public RecipeConversionService(UnitConversionService unitConversionService) {
     this.unitConversionService = unitConversionService;
+  }
+
+  public ConversionResult convertRecipe(ConversionRequest conversionRequest) {
+    double convertedValue = convert(conversionRequest);
+    return new ConversionResult(conversionRequest, this, convertedValue);
   }
 
   public double convert(ConversionRequest conversionRequest) {
