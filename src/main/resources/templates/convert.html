@@ -36,19 +36,19 @@
             <form action="/convert" method="post">
     <div class="mb-3">
       <label for="recipe" class="form-label">Recipe Name (One unit conversion at a time):</label>
-      <input type="text" class="form-control" id="recipe" name="recipeName" >
+      <input type="text" class="form-control" id="recipe" name="recipeName" required>
     </div>
     <div class="mb-3">
       <label for="ingredient" class="form-label">Ingredient:</label>
-      <input type="text" class="form-control" id="ingredient" name="ingredient" >
+      <input type="text" class="form-control" id="ingredient" name="ingredient" required>
     </div>
     <div class="mb-3">
       <label for="amount" class="form-label">Amount:</label>
-      <input type="number" step="any" class="form-control" id="amount" name="amount" >
+      <input type="number" step="any" class="form-control" id="amount" name="amount" required>
     </div>
     <div class="mb-3">
       <label for="fromUnit" class="form-label">From Unit:</label>
-      <select class="form-select" id="fromUnit" name="fromUnit" >
+      <select class="form-select" id="fromUnit" name="fromUnit" required>
         <option value="" disabled selected>Select unit</option>
         <option value="tsp">Teaspoon (tsp)</option>
         <option value="tbsp">Tablespoon (tbsp)</option>
@@ -60,7 +60,8 @@
         <option value="oz">Ounce (oz)</option>
         <option value="pint">Pint (pint)</option>
         <option value="quart">Quart (quart)</option>
-        <option value="gallon">Fluid Ounce (floz)</option>
+        <option value="fluid ounce">Fluid Ounce (floz)</option>
+        <option value="gallon">Gallon (gal)</option>
         <option value="gram">Gram (g)</option>
         <option value="kg">Kilogram (kg)</option>
         <option value="lb">Pound (lb)</option>
@@ -68,7 +69,7 @@
     </div>
     <div class="mb-3">
       <label for="toUnit" class="form-label">To Unit:</label>
-      <select class="form-select" id="toUnit" name="toUnit" >
+      <select class="form-select" id="toUnit" name="toUnit" required>
         <option value="" disabled selected>Select unit</option>
         <option value="tsp">Teaspoon (tsp)</option>
         <option value="tbsp">Tablespoon (tbsp)</option>
@@ -80,7 +81,8 @@
         <option value="oz">Ounce (oz)</option>
         <option value="pint">Pint (pint)</option>
         <option value="quart">Quart (quart)</option>
-        <option value="gallon">Fluid Ounce (floz)</option>
+        <option value="fluid ounce">Fluid Ounce (floz)</option>
+        <option value="gallon">Gallon (gal)</option>
         <option value="gram">Gram (g)</option>
         <option value="kg">Kilogram (kg)</option>
         <option value="lb">Pound (lb)</option>
