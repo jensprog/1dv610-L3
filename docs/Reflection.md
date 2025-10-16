@@ -1,6 +1,22 @@
 # Chapter 2
 # Chapter 3
+## Small!
+I have not refactored any methods in this regard because of time contraint, but I think I have done an OK job with not having too large methods in both L2 and L3. L3 is implemented better in this regard in my opinion but the codebase is also smaller than L2. 
+
+## Use Descriptive Names
+I have done a better job of this in L3 than in L2 in my opinion. Both laborations have OK naming (in regards to what the method is doing) but sometimes I've lost track and included validation inside a method, been having both a data structure to hold data and a behaviour. If I would really go through each method I have I would probably break this rule somehow, since everything can always be improved. 
+
 # Chapter 4
+## Informative Comments
+I believe the comments I've used in L2 are informative, I have only used JavaDoc at the top of the class to give myself and other users a "smooth entrance" to the class.
+I understand the concepts of the book regarading comments, they can lie and mislead you, which I've done countless of times during my education so far. So I have not used any line comments since I've been really bad in the past to update them whenever I've changed something in a method.
+[ClassComment](images/CommentOfClass.png)
+
+## TODO Comments
+I liked the part where you (Daniel) told us about how you used them, which I thought was a clever way to know where you left off the last time. I have not used TODO comments that often so far, but I think I might do in the future. 
+
+## Explain YourSelf In Code
+I liked this part in the book, instead of explaining what the method below your comment is doing, spend those seconds on renaming the method instead so the method itself can explain what it does.
 
 # Chapter 5
 ## Vertical Openness Between Concepts:
