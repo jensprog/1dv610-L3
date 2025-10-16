@@ -1,3 +1,5 @@
+# Chapter 2
+# Chapter 3
 # Chapter 4
 
 # Chapter 5
@@ -19,8 +21,37 @@ Before I read chapter 6 I had not thought of this concept, to not mix data struc
 [UnitTypeDetector](images/UnitTypeDetector.png)
 
 ## Data/Object Anti-Symmetry
-- UnitConversionService hides interal implementation through private fields and methods, only exposing the behaviour which is convert() for the public interface.
+- UnitConversionService hides interal implementation through private fields and methods, only exposing the behaviour which is convert() for the public interface. Before I redesigned it, the service class contained the validation of each unit as well, which is now separated as stated before in the UnitTypeDetector class.
 [UnitConversionService](images/UnitConversionService.png)
 
 ## Data Abstraction
 - I have used getters and setters everywhere, have not thought about it that much since I've always thought it was "standard". I'm thinking more in terms of "If I want to access this class private variables in another class, I need getters and setters, because otherwise I'm restricted." Probably just a beginner mindset, not having a good plan for the class in regards to which other class should have the rights to access it's private variables or should this class only expose it's behaviour.
+
+# Chapter 7
+## Provide Context With Exceptions
+- I'm throwing exceptions in both L2 and L3, could possible name which operations that failed, and also add more exceptions since I don't use them everywhere (Tokenizer.java in L2).
+
+## Define Exception Classes In Terms Of A Caller's Needs
+- I have redudant exceptions in L2 for the "toUnit" and "fromUnit", should be changed to a single exceptions called in each converter instead.
+- Should add exception handlers to L2 and L3.
+
+## Write Your Try-Catch-Finally Statement First
+- This seems interesting and I want to try that, I guess the next course is about TDD and I hope we can focus on trying to write code using that principle.
+
+# Chapter 8
+## Using Third-Party Code
+- I use multiple Maps in my L2 module, all of them are private which avoids misuse of the list.
+
+## Exploring and Learning Boundaries
+- I thought I learned a bit about Spring framework, how to create a Spring Boot App etc, but when looking further into it, those frameworks do a lot of things and I realized that I would need to learn a lot more to understand everything each package does.
+
+# Chapter 9
+## One Assert Per Test:
+- I had multiple asserts per test before I read this chapter and adding this chapter + feedback regarding these tests, I've changed most of them (except parser and some token tests) to only have one assert and have given them better naming to mirror what the test is about. Maybe it defeats the purpose of writing automated unit tests first, then the production code, since I changed the tests and added new once with current production code, but I thought that change could be good in this case for learning purposes.
+[OneAssertPerTest](images/OneAssertPerTest.png)
+[RefactoredUnitTestsBefore](images/RefactoredUnitTests.png)
+
+## F.I.R.S.T:
+- My automated unit tests follow this principle, they returned PASSED/FAILED and no raw values. 
+
+# Chapter 10
