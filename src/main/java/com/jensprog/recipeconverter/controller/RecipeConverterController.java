@@ -6,10 +6,7 @@ import com.jensprog.recipeconverter.model.ConversionResult;
 import com.jensprog.recipeconverter.service.RecipeConversionService;
 import com.jensprog.recipeconverter.service.SessionStorageManagement;
 import com.jensprog.recipeconverter.validation.RequestValidator;
-
 import jakarta.servlet.http.HttpSession;
-
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +25,8 @@ public class RecipeConverterController {
   private final RequestValidator requestValidator;
   private final SessionStorageManagement sessionStorageManagement;
 
-  public RecipeConverterController(RecipeConversionService recipeConversionService, RequestValidator requestValidator, SessionStorageManagement sessionStorageManagement) {
+  public RecipeConverterController(RecipeConversionService recipeConversionService, RequestValidator requestValidator, 
+      SessionStorageManagement sessionStorageManagement) {
     this.recipeConversionService = recipeConversionService;
     this.requestValidator = requestValidator;
     this.sessionStorageManagement = sessionStorageManagement;
