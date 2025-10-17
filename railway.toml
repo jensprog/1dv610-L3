@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "java -jar build/libs/1dv610-L3.jar"
+healthcheckPath = "/"
