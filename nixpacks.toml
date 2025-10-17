@@ -1,0 +1,5 @@
+[phases.build]
+cmd = "./gradlew clean bootJar"
+
+[phases.start]
+cmd = "java -jar build/libs/1dv610-L3.jar"
