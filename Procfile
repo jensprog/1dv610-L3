@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -jar build/libs/1dv610-L3.jar

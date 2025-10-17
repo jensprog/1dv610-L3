@@ -1,5 +1,5 @@
 [phases.build]
-cmd = "./gradlew clean bootJar"
+cmd = "chmod +x gradlew && ./gradlew clean build --no-daemon"
 
 [phases.start]
-cmd = "java -jar build/libs/1dv610-L3.jar"
+cmd = "java -Dserver.port=$PORT -jar build/libs/1dv610-L3.jar"
