@@ -16,7 +16,7 @@ Right now it's only stored until you close your browser, if you do, the data wil
 
 ## Requirements And Manual Unit Tests
 - [Requirements](../../wiki/Requirements)
-- [ManualUnitTests](../../Manual-unit-tests)
+- [ManualUnitTests](../../wiki/Manual-unit-tests)
 
 ## License
 [MIT License](LICENSE)
