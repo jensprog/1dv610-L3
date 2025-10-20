@@ -9,7 +9,7 @@ Overall this chapter have helped me a lot regarding pointing out the "why" to wh
 I have not refactored any methods in this regard because of time contraint, but I think I have done an OK job with not having too large methods in both L2 and L3. L3 is implemented better in this regard in my opinion but the codebase is also smaller than in L2. 
 
 ## Use Descriptive Names
-I have done a better job of this in L3 than in L2 in my opinion. Both laborations have OK naming (in regards to what the method is doing) but sometimes I've lost track and included validation inside a method, been having both a data structure to hold data and a behaviour. If I would really go through each method I have I would probably break this rule somehow, since everything can always be improved.
+I have done a better job of this in L3 than in L2 in my opinion. Both laborations have OK naming (in regards to what the method is doing) but sometimes I've lost track and included validation inside a method. Have had classes with both a data structure to hold data and a behaviour. If I would really go through each method I have I would probably break this rule somehow, since everything can always be improved.
 - **L3**: [MethodNames](images/DescripticNames.png)
 
 # Chapter 4
@@ -59,10 +59,10 @@ This exception is thrown in each unitconverter class inside L2, that's why I bel
 - **L2**: [Exception](images/IllegalArgumentException.png)
 
 ## Define Exception Classes In Terms Of A Caller's Needs
-This points I believe to the above principle, I want to throw an exception that is defined for what's it's actually throwing. Making it easier for other developers to understand the exact exception, instead of "IllegalArgumentException" for every exception in the project.
+This points, I believe to the above principle, I want to throw an exception that is defined for what's it's actually throwing. Making it easier for other developers to understand the exact exception, instead of "IllegalArgumentException" for every exception in the project.
 
 ## Write Your Try-Catch-Finally Statement First
-This seems interesting and I want to try that, I guess the next course is about TDD and I hope we can focus on trying to write code using that principle.
+This seems interesting and I want to try that, I guess the next course is about TDD and I hope we can focus on trying to write code using that principle. So far I've just had manual unit tests and tried JUnit and Jest for automated unit tests. Would be interesting to create a smaller project creating the tests first then the production code. 
 
 # Chapter 8
 ## Using Third-Party Code
@@ -90,17 +90,17 @@ I don't follow this rule, I immediatly thought of my UnitConversionService.java 
 - **L2**: [StepDownRule](images/Stepdownrule.png)
 
 ## Classes Should Be Small!
-I learned something new, before this chapter I thought I would "count lines" like how the book covers how small a function should be (around 120 lines is my largest class) but I never thought of it's size by **responsibility**. That makes a lot of sense because when my classes have/had too many, I get frustrated not knowing where things happen and how it's connected. 
+I learned something new, before this chapter I thought I would "count lines" like how the book covers how small a function should be (around 120 lines is my largest class) but I never thought of it's size by **responsibility**. That makes a lot of sense because when my classes have/had too many, I get frustrated because it gets too complex for me sometimes to follow the responsibilities and dependencies. 
 
 # Chapter 11
 ## Dependency Injection
-I used Spring Frameworks @Configuration and @Bean annotation for DI, Spring can then manage this object for me. Injected in my RecipeConversionService that depends on it.
+I used Spring Frameworks @Configuration and @Bean annotation for DI, Spring can then manage my module as an object for me. Injected in my RecipeConversionService that depends on it.
 What I should've done in L2 is to create an Abstract Factory Pattern for my converter classes, doing the same thing as the Spring framework does for me in L3, but manually by myself.
 - **L3**: [UnitConversionConfig](images/ConfigAndBean.png)
 
 ## Scaling up
 I have defined two DTO's in L3, ConversionRequest and ConversionResult. They are kinda redudant but I figured it separates them quite good and was easy to name since they only do 1 thing.
-If I had not read the book I would probably just have 1 class, but when using both it's easier to understand that one is holding the users input, the other is holding the result of the conversion.
+If I had not read the book I would probably just have 1 class, but when using both it's easier to understand that one is storing the users input, the other is storing the result of the conversion.
 - **L3**: [ConversionRequest](images/ConversionRequestChap11.png)
 - **L3**: [ConversionResult](images/ConversionResultChap11.png)
 
