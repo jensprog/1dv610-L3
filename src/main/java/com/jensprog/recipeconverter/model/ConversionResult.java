@@ -1,6 +1,5 @@
 package com.jensprog.recipeconverter.model;
 
-import com.jensprog.recipeconverter.service.RecipeConversionService;
 import java.io.Serializable;
 
 /**
