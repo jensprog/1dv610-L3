@@ -1,2 +1,2 @@
 # Visit Wiki
--[Vision](../../wiki/Vision)
+- [Vision](../../wiki/Vision)
