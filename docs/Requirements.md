@@ -1,2 +1,2 @@
 # Visit Wiki
-- [Requirements](../../wiki/Requirements)
+- [Requirements](../../../wiki/Requirements)
