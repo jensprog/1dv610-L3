@@ -18,5 +18,8 @@ Right now it's only stored until you close your browser, if you do, the data wil
 - [Requirements](../../wiki/Requirements)
 - [ManualUnitTests](../../wiki/Manual-unit-tests)
 
+## Contributing
+- [DeveloperMD]
+
 ## License
 [MIT License](LICENSE)

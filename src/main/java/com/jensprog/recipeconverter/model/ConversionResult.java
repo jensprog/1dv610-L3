@@ -16,7 +16,7 @@ public class ConversionResult implements Serializable {
 
   public ConversionResult() {}
 
-  public ConversionResult(ConversionRequest request, RecipeConversionService service, double convertedValue) {
+  public ConversionResult(ConversionRequest request, double convertedValue) {
     this.recipeName = request.getRecipeName();
     this.ingredient = request.getIngredient();
     this.amount = request.getAmount();

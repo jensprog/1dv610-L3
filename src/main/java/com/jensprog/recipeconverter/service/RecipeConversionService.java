@@ -19,7 +19,7 @@ public class RecipeConversionService {
 
   public ConversionResult convertRecipe(ConversionRequest conversionRequest) {
     double convertedValue = convert(conversionRequest);
-    return new ConversionResult(conversionRequest, this, convertedValue);
+    return new ConversionResult(conversionRequest, convertedValue);
   }
 
   public double convert(ConversionRequest conversionRequest) {
