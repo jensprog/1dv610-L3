@@ -19,7 +19,7 @@ Right now it's only stored until you close your browser, if you do, the data wil
 - [ManualUnitTests](../../wiki/Manual-unit-tests)
 
 ## Contributing
-- [DeveloperMD]
+- [Developer](../../blob/main/DEVELOPER.md)
 
 ## License
 [MIT License](LICENSE)
